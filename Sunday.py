@@ -5,15 +5,38 @@ import time
 
 
 def NycSal():
+    Gross1 = 0
+    Gross2 = 0
     FinalAmount = 0
     i=0
-    Gross = 0
     tax = 0.66
     Nys = Tk()
     Nys.geometry('500x800')
+
+    def Calculate():
+        Gross = Egross.get
+        Rent = Erent.get
+        FL = EFL.get
+        Save = Esave.get
+        Gross21 = int(Gross()) * 1
+        Gross2 = int(Gross()) * tax
+        Grossposttaxm = Gross2 / 12
+        otherexpences = int(Rent()) + int(FL()) + int(Save())
+        FinalAmount = Grossposttaxm - otherexpences
+
+        Gross0.config(text=Gross21)
+        Gross00.config(text=Gross2)
+        Final0.config(text=FinalAmount)
+        
+        print(Gross2)
+        print(Grossposttaxm)
+        print(otherexpences)
+        print(FinalAmount)
+        print('Through on calc')
+
     Lgross = Label(Nys, text='Gross Income')
     Lgross.place(x=10,y=10)
-    Egross = Entry(Nys)
+    Egross = Entry()
     Egross.place(x=10,y=30)
         
     Lrent = Label(Nys, text='How much do you spend on rent / Mortgage monthly?')
@@ -31,32 +54,42 @@ def NycSal():
     Esave = Entry(Nys)
     Esave.place(x=10,y=240)
 
-    LGross = Label(Nys, text=Gross)
-    LGross.place(x=10,y=300)
+    LGross = Label(Nys, text='Gross Pre Tax: ')
+    LGross.place(x=10,y=340)
+    Gross0 = Label(Nys, text=Gross1)
+    Gross0.place(x=10,y=360)
+    LGross = Label(Nys, text='Gross Post Tax: ')
+    LGross.place(x=10,y=400)
+    Gross00 = Label(Nys, text=Gross2)
+    Gross00.place(x=10,y=420)
+    LGrosspt = Label(Nys, text='Salary After All Deductions: ')
+    LGrosspt.place(x=10,y=460)
+    Final0 = Label(Nys, text=FinalAmount)
+    Final0.place(x=10,y=480)
 
-    def Calculate():
-        Gross = Egross.get
-        Rent = Erent.get
-        FL = EFL.get
-        Save = Esave.get
-        Grossposttax = Gross * tax
-        otherexpences = Rent + FL + Save
-        print(otherexpences)
-        FinalAmount == Grossposttax - otherexpences
-        
-        
-        print('Through on calc')
+
+    LGross = Label(Nys, text='Rent/Mortgage Payment: ')
+    LGross.place(x=300,y=340)
+    LGross = Label(Nys, text='Car Payments Payment: ')
+    LGross.place(x=300,y=400)
+    LGross = Label(Nys, text='Savings Deductions: ')
+    LGross.place(x=300,y=460)
+
+
+    LGross = Label(Nys, text='''Simple Salary Calculator that removes 33% tax (Combination of the usual tax 
+    rate in nyc) and that removes other common expenses for quick 
+    calculations''')
+    LGross.place(x=1,y=600)
 
     LGross = Button(Nys, text='Calculate', command=Calculate)
     LGross.place(x=10,y=270)
-    print('h')
     Nys.mainloop()
     
 
 def Gpa00():
 
     GpaCalc = Tk()
-    GpaCalc.geometry('300x400')
+    GpaCalc.geometry('500x400')
     GpaCalc.title('Gpa Calculator')
     GpaCalc.config(bg='#101820')
 
@@ -134,6 +167,16 @@ def Gpa00():
 
     GpaSum = Button(GpaCalc, text='Calculate', command=Gpamath, highlightbackground='#101820')
     GpaSum.place(y=200)
+
+
+
+
+    Minidesc = Label(GpaCalc, text=''' Mini Highschool Gpa Calculator''', background='#101820')
+    Minidesc.place(y=300)
+    Minidesc2 = Label(GpaCalc, text='''Adds up all four values, Averages them, and filters the mean for the GPA''', background='#101820')
+    Minidesc2.place(y=320)
+    Minidesc3 = Label(GpaCalc, text='''Will not return any result if anything but a number value isnt put in the calculator''', background='#101820')
+    Minidesc3.place(y=340)
     GpaCalc.mainloop()
 
 def Kaliui():
@@ -173,6 +216,9 @@ def Home():
     Op1.place(y=50)
     Op1.pack
 
+    Op2 = Button(Homescreen, text='NYC SALARY CALCULATOR', command=NycSal, highlightbackground='#363945')
+    Op2.place(y=90)
+    Op2.pack
     Homescreen.mainloop()
 
 def LoginPage():
@@ -187,8 +233,8 @@ def LoginPage():
     Username00.place(x=4,y=10)
     Username00.pack
 
-    Password00 = Entry(Login, width=10)
-    Password00.place(x=49, y=40)
+    Password00 = Entry(Login, width=7)
+    Password00.place(x=120, y=50)
     Password00.pack
 
 
@@ -221,7 +267,13 @@ def LoginPage():
             print('Corosponding Password Attempt: ', Password)
 
     LoginChecker = Button(Login,highlightbackground='black', command=LoginCheck)
-    LoginChecker.place(x=79,y=70)
+    LoginChecker.place(x=160,y=90)
+
+    Suns = Label(text='S', font=('arial', 150),background='black', borderwidth=0)
+    Suns.place(y=50)
+    Sununday = Label(text='unday', font=('Sans', 20),background='black')
+    Sununday.place(x=95, y=170)
+
     Login.mainloop()
 
 
@@ -230,4 +282,3 @@ def LoginPage():
 
 
 LoginPage()
-#NycSal()
